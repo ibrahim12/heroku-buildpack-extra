@@ -28,6 +28,8 @@ export PATH="$NPM_BIN_DIR:$(build_path $NODE_DIR)/bin:$PATH"
 export CPATH="$NODE_INCLUDE_PATH"
 export CPPPATH="$NODE_INCLUDE_PATH"
 
+source "$BIN_DIR/utils"
+
 # Let's get started...
 puts_step "Installing node packages using node version $NODE_VERSION"
 

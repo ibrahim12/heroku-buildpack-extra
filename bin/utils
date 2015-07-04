@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# Buildpack Steps. Usage:
+#
+#     $ puts_step "Step #1"
+#     -----> Step #1
+function puts_step() {
+    time_step
+    echo "-----> $@"
+}
+
+# Returns an absolute path to the given directory, relative to the build pack.
+# Usage:
+#
+#     $ build_path ".heroku/python"
+#     /app/.heroku/python
+function build_path() {
+    echo "$BUILD_DIR/$1"
+}
+
+# Syntax sugar.
+function indent() {
+    RE="s/^/       /"
+    sed $SED_FLAG "$RE"
+}
+
+# Usage: $ download_package tarball_url location
+function download_package() {
+    local package="$1"
+    local location="$2"
+
+    mkdir -p $location
+    curl $package -s -o - | tar xzf - -C $location
+}
+
+# Usage: $ set_env_override key value
+function set_env_override() {
+    echo "export $1=$2" >> ${3:-$PROFILE_PATH}
+}
