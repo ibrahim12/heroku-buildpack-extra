@@ -18,6 +18,8 @@ export HEROKU_LIB_DIR="$HEROKU_VENDOR_DIR/lib"
 export LANG="en_US.UTF-8"
 export TIME_STEP_THRESHOLD=${TIME_STEP_THRESHOLD:-10}
 
+source "$BIN_DIR/utils"
+
 NODE_DIR="$HEROKU_DIR/node"
 NODE_VERSION=${NODE_VERSION:-"0.10.26"}
 NODE_INCLUDE_PATH="$(build_path $NODE_DIR)/include"
@@ -28,7 +30,6 @@ export PATH="$NPM_BIN_DIR:$(build_path $NODE_DIR)/bin:$PATH"
 export CPATH="$NODE_INCLUDE_PATH"
 export CPPPATH="$NODE_INCLUDE_PATH"
 
-source "$BIN_DIR/utils"
 
 # Let's get started...
 puts_step "Installing node packages using node version $NODE_VERSION"
