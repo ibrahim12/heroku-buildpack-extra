@@ -30,6 +30,8 @@ export PATH="$NPM_BIN_DIR:$(build_path $NODE_DIR)/bin:$PATH"
 export CPATH="$NODE_INCLUDE_PATH"
 export CPPPATH="$NODE_INCLUDE_PATH"
 
+cd "$BUILD_DIR"
+
 set +e
 # Create set-aside `.heroku` folder.
 mkdir "$HEROKU_DIR" &> /dev/null
